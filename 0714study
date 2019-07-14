@@ -1,0 +1,21 @@
+%matplotlib inline
+import pandas as pd
+
+df = pd.read_csv('data/silicon_valley_summary.csv')
+a = df[(df['job_category'] =='Managers') & (df['gender'] == 'Male')]
+a.drop(30, axis='rows', inplace=True)
+a.plot(kind='bar', x='race_ethnicity', y='count')
+
+%matplotlib inline
+import pandas as pd
+
+df = pd.read_csv('data/silicon_valley_details.csv')
+a = df['count'] != 0 
+b = df['company'] == 'Adobe' 
+
+df = df[(df['race'] == 'Overall_totals') & a & b]
+df = df[['job_category','count']]
+df = df.set_index('job_category')
+#df.plot(kind='pie', y='count')
+df.drop(['Totals', 'Previous_totals'], inplace = True)
+df.plot(kind='pie', y='count')
