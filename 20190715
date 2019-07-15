@@ -1,0 +1,8 @@
+#seaborn kde그래프 사용연습
+
+!pip install seaborn==0.9.0
+import pandas as pd
+import seaborn as sns
+df = pd.read_csv('D://body.csv', index_col = 0)
+df.head()
+sns.kdeplot(df['Height'], bw = 0.03)
