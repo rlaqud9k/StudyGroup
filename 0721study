@@ -1,0 +1,17 @@
+%matplotlib inline
+import pandas as pd
+import seaborn as sns 
+df = pd.read_csv('d:/exam.csv')
+
+df.corr()
+sns.heatmap(df.corr(), annot = True)
+
+dff = pd.read_csv('d:/young_survey.csv')
+dff2 = dff.iloc[ :, 140:]
+sns.jointplot(data = dff2, x='Height', y = 'Age')
+sns.violinplot(data = dff2, y='Height', x= 'Gender', hue = 'Age')
+dfff = pd.read_csv('d:/occupations.csv')
+d = dfff[dfff['gender'] == 'F']
+d['occupation'].value_counts().plot(kind = 'bar')
+dd = dfff[dfff['gender'] == 'M']
+dd['occupation'].value_counts().sort_values(ascending = False)
