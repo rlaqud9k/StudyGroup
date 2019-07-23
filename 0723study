@@ -1,0 +1,21 @@
+import pandas as pd
+
+df = pd.read_csv('d:/young_survey.csv')
+df.corr()
+brunch_df = df.corr()['Getting up']
+brunch_df[1:19]
+brunch_df[1:19].sort_values(ascending=True)
+
+dddf = df.loc[: , ['Branded clothing','Healthy eating','Musical instruments','New environment','Prioritising workload','Spending on looks','Workaholism','Writing','Writing notes']]
+dddf.corr()
+
+df1 = pd.read_csv('d:/titanic.csv')
+max = df1['Fare'].max()
+# df1[df1['Fare'] == max]
+# df1['Survived'].value_counts()
+# df1['Pclass'].value_counts()
+# ps = (df1['Pclass'] == 1) & (df1['Survived'] == 1)
+# pss = df1[ps]
+# pss['Survived'].count()
+
+df1
