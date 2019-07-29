@@ -1,0 +1,28 @@
+import pandas as pd
+
+df = pd.read_csv('data/steam_1.csv')
+df.dropna(axis = 0, inplace = True)
+df
+
+%matplotlib inline
+import pandas as pd
+
+df = pd.read_csv('data/movie_metadata.csv')
+
+q1 = df['budget'].quantile(0.25)
+q3 = df['budget'].quantile(0.75)
+iqr = q3 - q1
+
+condition = df['budget'] > q3 + 5 * iqr
+df.drop(df[condition].index, inplace = True)
+df.plot(kind = 'scatter', x='budget', y='imdb_score')
+
+
+%matplotlib inline
+import pandas as pd
+
+df = pd.read_csv('data/movie_metadata.csv')
+
+a= df.sort_values('budget', ascending = False).iloc[:15].index
+df.drop(a, inplace = True)
+df.plot(kind='scatter', x='budget', y='imdb_score')
