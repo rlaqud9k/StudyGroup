@@ -1,0 +1,17 @@
+
+import requests
+
+page = requests.get("https://workey.codeit.kr/ratings/index")
+rating_page = page.text
+print(rating_page)
+
+import requests
+
+rating_pages =[]
+for i in range(2010,2019):
+    for u in range(1,13):
+    	for t in range(0,5):
+            page = requests.get("https://workey.codeit.kr/ratings/index?year="+str(i)+"&month="+str(u)+"&weekIndex="+str(t))
+			rating_pages.append(page.text)
+print(len(rating_pages)) # 가져온 총 페이지 수 
+print(rating_pages[0]) # 첫 번째 페이지의 HTML 코드   
