@@ -1,0 +1,13 @@
+import pandas as pd
+
+df = pd.read_csv('data/museum_1.csv')
+c = list(df['시설명'].str.contains('대학'))
+for i in range(len(c)):
+    if c[i] == True:
+        c[i] = '대학'
+    else:
+        c[i] = '일반'
+        
+dd = pd.Series(c)
+df['분류'] = dd
+df
